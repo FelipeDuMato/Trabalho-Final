@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Inicial com Gradiente</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    /* Corpo da página com gradiente de fundo */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #7579ff, #b224ef);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      text-align: center;
+    }
+    header, footer {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+    a.button {
+      display: inline-block;
+      background: #fff;
+      color: #b224ef;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin-top: 1rem;
+    }
+    a.button:hover {
+      background: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Sistema de Cadastro de Partidos Políticos e Candidatos</h2>
+  </header>
+  <main>
+    <h1>Bem-vindo(a)!</h1>
+    <p>
+      Este é um sistema básico para cadastramento de partidos políticos e candidatos.
+      Você pode adicionar, editar, excluir e visualizar informações sobre partidos e seus respectivos candidatos.
+      <br><br>
+      Login Feito! Escolha o que você deseja cadastrar.
+    </p>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+    <a href="#" class="button" style="max-width: 206px;">Cadastrar Candidato</a>
+    <a href="#" class="button" style="min-width: 206px;">Cadastrar Partido</a>
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 Sistema cadastro candidatos e partidos. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
