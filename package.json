@@ -1,0 +1,35 @@
+{
+  "name": "trabalho-final",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeDuMato/Trabalho-Final.git"
+  },
+  "keywords": [
+    "partido",
+    "candidato",
+    "login",
+    "cadastrar",
+    "gerenciar",
+    "excluir",
+    "visualizar",
+    "editar"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelipeDuMato/Trabalho-Final/issues"
+  },
+  "homepage": "https://github.com/FelipeDuMato/Trabalho-Final#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-session": "^1.18.1"
+  }
+}
