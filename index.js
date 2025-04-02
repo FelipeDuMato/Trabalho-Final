@@ -22,6 +22,17 @@ app.use(session({
 app.get('/login', (req, res) => {
     res.redirect('./login-form/index.html');
 });
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log('Erro ao destruir a sessão:', err);
+            res.redirect('/home'); // Redireciona para a página inicial em caso de erro
+        } else {
+            res.redirect('/home'); // Redireciona para a página inicial após logout
+        }});
+    }
+);
+
 
 app.post('/login', (req, res) => {
     const usuario = req.body.usuario;
@@ -34,9 +45,13 @@ app.post('/login', (req, res) => {
     }
 });
 
-app.use(express.static('./public')); //Início
+app.use(express.static('./public'));
+app.get('/home', (req, res) => {
+    res.redirect('./home/index.html'); // Redireciona para a página inicial
+});
+
 app.use(autenticar, express.static('./private')); // Middleware de autenticação
 
 app.listen(porta, localhost, () => {
     console.log(`Servidor rodando em http://${localhost}:${porta}`);
-  });
+});

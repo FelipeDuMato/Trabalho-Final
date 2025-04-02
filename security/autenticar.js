@@ -5,6 +5,6 @@ export default function autenticar(req, res, next) {
         next(); // Usuário autenticado, prossegue para a próxima rota
     } else {
         // Se não estiver autenticado, redireciona para a página de login
-        res.redirect('/login');
+        res.redirect('/home');
     }
 }
