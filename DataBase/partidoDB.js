@@ -1,5 +1,5 @@
 import conectar from './conexao.js';
-import Partido from '../Model/cadastro-partido.js';
+import Partido from '../Model/modeloPartido.js';
 
 export default class PartidoDB {
     async init() {
@@ -50,6 +50,8 @@ export default class PartidoDB {
         }
     }
 
+
+
     async listar() {
         const conexao = await conectar();
         const sql = 'SELECT * FROM partido ORDER BY codigo';
@@ -57,9 +59,17 @@ export default class PartidoDB {
         await conexao.release();
         let listaPartidos = [];
         for (const registro of registros) {
-            const partido = new CadastroPartido(registro.codigo, registro.nome, registro.sigla);
+            const partido = new Partido(registro.codigo, registro.nome, registro.sigla);
             listaPartidos.push(partido);
         }
         return listaPartidos;
+    }
+    
+    async nomeSigla(nome, sigla) {
+        const conexao = await conectar();
+        const sql = `SELECT codigo FROM partido WHERE nome = ? AND sigla = ?`;
+        const valores = [nome, sigla];
+        const [result] = await conexao.execute(sql, valores);
+        return result[0].codigo
     }
 };

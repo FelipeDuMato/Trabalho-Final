@@ -1,4 +1,7 @@
+import CandidatoDB from "../DataBase/cadindatoDB.js";
+
 export default class Candidato {
+    #numeroCandidato;
     #cpf;
     #tituloEleitor;
     #nome;
@@ -9,8 +12,10 @@ export default class Candidato {
     #uf;
     #cep;
     #rendaMensal;
+    #codigoPartido;
 
-    constructor(cpf, tituloEleitor, nome, endereco, numero, bairro, cidade, uf, cep, rendaMensal) {
+    constructor(numeroCandidato, cpf, tituloEleitor, nome, endereco, numero, bairro, cidade, uf, cep, rendaMensal, codigoPartido) {
+        this.#numeroCandidato = numeroCandidato;
         this.#cpf = cpf;
         this.#tituloEleitor = tituloEleitor;
         this.#nome = nome;
@@ -21,6 +26,14 @@ export default class Candidato {
         this.#uf = uf;
         this.#cep = cep;
         this.#rendaMensal = rendaMensal;
+        this.#codigoPartido = codigoPartido;
+    }
+
+    get numeroCandidato() {
+        return this.#numeroCandidato;
+    }
+    set numeroCandidato(novoNumero) {
+        this.#numeroCandidato = novoNumero;
     }
 
     get cpf() {
@@ -93,8 +106,16 @@ export default class Candidato {
         this.#rendaMensal = novaRenda;
     }
 
+    get codigoPartido() {
+        return this.#codigoPartido;
+    }
+    set codigoPartido(novoCodigo) {
+        this.#codigoPartido = novoCodigo;
+    }
+
     toJSON() {
         return {
+            "numeroCandidato": this.#numeroCandidato,
             "cpf": this.#cpf,
             "tituloEleitor": this.#tituloEleitor,
             "nome": this.#nome,
@@ -104,7 +125,28 @@ export default class Candidato {
             "cidade": this.#cidade,
             "uf": this.#uf,
             "cep": this.#cep,
-            "rendaMensal": this.#rendaMensal
+            "rendaMensal": this.#rendaMensal,
+            "codigoPartido": this.#codigoPartido
         };
+    }
+
+    async gravar() {
+        const candiDB = new CandidatoDB();
+        this.numeroCandidato = await candiDB.gravar(this);
+    }
+
+    async atualizar() {
+        const candiDB = new CandidatoDB();
+        await candiDB.atualizar(this)
+    }
+
+    async excluir() {
+        const candiDB = new CandidatoDB();
+        await candiDB.excluir(this)
+    }
+
+    async listar() {
+        const candiDB = new CandidatoDB();
+        return await candiDB.listar(this)
     }
 }
