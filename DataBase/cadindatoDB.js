@@ -1,5 +1,6 @@
 import conectar from "./conexao.js";
 import Candidato from "../Model/modeloCadindato.js";
+import PartidoDB from "./partidoDB.js";
 
 export default class CandidatoDB {
     async init() {
@@ -85,11 +86,13 @@ export default class CandidatoDB {
 
     async listar() {
         const conexao = await conectar();
-        const sql = ` SELECT * FROM candidato ORDER BY numeroCandidato`;
+        const sql = ` SELECT * FROM candidato`;
         const [registros, campos] = await conexao.execute(sql);
-        conexao.release();
+        await conexao.release();
         let listaCandidatos = [];
         for (const registro of registros) {
+            const partidoDB = new PartidoDB();
+            const partido = await partidoDB.consultarCodigo(registro.codigoPartido);
             const candidato = new Candidato(
                 registro.numeroCandidato,
                 registro.cpf,
@@ -102,7 +105,9 @@ export default class CandidatoDB {
                 registro.uf,
                 registro.cep,
                 registro.rendaMensal,
-                registro.codigoPartido
+                registro.codigoPartido,
+                partido.nome,
+                partido.sigla
             );
             listaCandidatos.push(candidato);
         }

@@ -70,6 +70,16 @@ export default class PartidoDB {
         const sql = `SELECT codigo FROM partido WHERE nome = ? AND sigla = ?`;
         const valores = [nome, sigla];
         const [result] = await conexao.execute(sql, valores);
+        await conexao.release();
         return result[0].codigo
+    }
+
+    async consultarCodigo(codigo) {
+        const conexao = await conectar();
+        const sql = `SELECT * FROM partido WHERE codigo = ?`;
+        const valores = [codigo];
+        const [result] = await conexao.execute(sql, valores);
+        await conexao.release();
+        return result[0]
     }
 };

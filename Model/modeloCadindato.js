@@ -13,8 +13,10 @@ export default class Candidato {
     #cep;
     #rendaMensal;
     #codigoPartido;
+    #nomePartido;
+    #siglaPartido;
 
-    constructor(numeroCandidato, cpf, tituloEleitor, nome, endereco, numero, bairro, cidade, uf, cep, rendaMensal, codigoPartido) {
+    constructor(numeroCandidato, cpf, tituloEleitor, nome, endereco, numero, bairro, cidade, uf, cep, rendaMensal, codigoPartido, nomePartido = '', siglaPartido = '') {
         this.#numeroCandidato = numeroCandidato;
         this.#cpf = cpf;
         this.#tituloEleitor = tituloEleitor;
@@ -27,6 +29,8 @@ export default class Candidato {
         this.#cep = cep;
         this.#rendaMensal = rendaMensal;
         this.#codigoPartido = codigoPartido;
+        this.#nomePartido = nomePartido;
+        this.#siglaPartido = siglaPartido;
     }
 
     get numeroCandidato() {
@@ -113,6 +117,20 @@ export default class Candidato {
         this.#codigoPartido = novoCodigo;
     }
 
+    set nomePartido(novoNome) {
+        this.#nomePartido = novoNome;
+    }
+    get nomePartido() {
+        return this.#nomePartido;
+    }
+
+    set siglaPartido(novaSigla) {
+        this.#siglaPartido = novaSigla;
+    }
+    get siglaPartido() {
+        return this.#siglaPartido;
+    }
+
     toJSON() {
         return {
             "numeroCandidato": this.#numeroCandidato,
@@ -126,7 +144,9 @@ export default class Candidato {
             "uf": this.#uf,
             "cep": this.#cep,
             "rendaMensal": this.#rendaMensal,
-            "codigoPartido": this.#codigoPartido
+            "codigoPartido": this.#codigoPartido,
+            "nomePartido": this.#nomePartido,
+            "siglaPartido": this.#siglaPartido
         };
     }
 

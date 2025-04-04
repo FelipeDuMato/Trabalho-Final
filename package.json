@@ -29,6 +29,8 @@
   "homepage": "https://github.com/FelipeDuMato/Trabalho-Final#readme",
   "description": "",
   "dependencies": {
+    "bootstrap": "^5.3.4",
+    "bootstrap-icons": "^1.11.3",
     "express": "^5.1.0",
     "express-session": "^1.18.1",
     "mysql2": "^3.14.0"

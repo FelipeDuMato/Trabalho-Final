@@ -71,7 +71,7 @@ export default class CandidatoCtrl {
     alterar(req, res){
         if (req.method === "PUT" || req.method === "PATCH" && req.is("application/json")) {
             const dados = req.body;
-            const numeroCandidado = dados.numeroCandidado;
+            const numeroCandidato = dados.numeroCandidato;
             const cpf = dados.cpf;
             const tituloEleitor = dados.tituloEleitor
             const nome = dados.nome;
@@ -83,9 +83,9 @@ export default class CandidatoCtrl {
             const cep = dados.cep;
             const rendaMensal = dados.rendaMensal;
 
-            if (numeroCandidado && cpf && tituloEleitor && nome && endereco && numero && bairro && cidade && uf && cep && rendaMensal) {
+            if (numeroCandidato && cpf && tituloEleitor && nome && endereco && numero && bairro && cidade && uf && cep && rendaMensal) {
                 const candidato = new Candidato(
-                    numeroCandidado,
+                    numeroCandidato,
                     cpf,
                     tituloEleitor,
                     nome,
@@ -134,10 +134,10 @@ export default class CandidatoCtrl {
     excluir(req, res){
         if (req.method === "DELETE" && req.is("application/json")) {
             const dados = req.body;
-            const numeroCandidado = dados.numeroCandidado
+            const numeroCandidato = dados.numeroCandidato
 
-            if (numeroCandidado) {
-                const candidato = new Candidato(numeroCandidado)
+            if (numeroCandidato) {
+                const candidato = new Candidato(numeroCandidato)
                 candidato.excluir().then(() =>{
                     res.status(200).json(
                         {
