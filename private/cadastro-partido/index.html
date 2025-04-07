@@ -25,6 +25,7 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <!--===============================================================================================-->
 </head>
 <body>
@@ -32,7 +33,7 @@
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form needs-validation" id="formPartido" method="POST" action="#" novalidate>
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -40,6 +41,10 @@
 					<span class="login100-form-title p-b-34 p-t-27">
 						Partido
 					</span>
+
+					<div id="espacoCodigo">
+
+					</div>
 						<div class="wrap-input100 validate-input" data-validate = "Coloque o nome">
 							<input class="input100" type="text" name="nomePartido" id="nomePartido">
 							<span class="focus-input100" data-placeholder="Nome Partido"></span>
@@ -50,10 +55,20 @@
 							<span class="focus-input100" data-placeholder="Sigla"></span>
 						</div>
 
+						<div id="mensagem">
+
+						</div>
+
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" id="botaoCadastrar">
 							Cadastrar
 						</button>
+						<button type="button" id="botaoAtualizar" class="login100-form-btn btn-warning" disabled>Editar</button>
+						<button type="button" id="botaoExcluir" class="login100-form-btn btn-danger" disabled>Excluir</button>
+					</div>
+					<br><br>
+					<div id="tabelaPartidos" style="color: white;">
+
 					</div>
 				</form>
 			</div>
@@ -79,6 +94,7 @@
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
+	<script src="../scripts/partido.js"></script>
 
 </body>
 </html>

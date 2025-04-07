@@ -9,7 +9,7 @@ export default class PartidoCtrl {
             const sigla = dados.sigla;
 
             if (nome && sigla) {
-                const partido = new Partido(nome, sigla);
+                const partido = new Partido(0, nome, sigla);
                 partido.gravar().then(() => {
                     res.status(201).json(
                         {
@@ -51,7 +51,7 @@ export default class PartidoCtrl {
             const sigla = dados.sigla;
 
             if (codigo && nome && sigla) {
-                const partido = new Partido(nome, sigla, codigo);
+                const partido = new Partido(codigo, nome, sigla);
                 partido.alterar().then(() => {
                     res.status(200).json(
                         {

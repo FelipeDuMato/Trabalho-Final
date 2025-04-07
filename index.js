@@ -2,6 +2,7 @@ import express from "express";
 import rotaCandidato from "./Routes/rotaCandidato.js";
 import autenticar from './security/autenticar.js';
 import session from 'express-session';
+import rotaPartido from "./Routes/rotaPartido.js";
 
 const host = "localhost";
 const porta = 3000;
@@ -51,7 +52,9 @@ app.get('/home', (req, res) => {
 
 app.use(autenticar, express.static('./private')); // Middleware de autenticação
 
+//Rotas
 app.use("/candidatos", rotaCandidato);
+app.use("/partidos", rotaPartido);
 
 app.listen(porta, host, () => {
     console.log(`Servidor rodando em: http://${host}:${porta}`)
