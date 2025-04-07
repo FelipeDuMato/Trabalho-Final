@@ -13,6 +13,7 @@ function manipularEnvio(evento) {
         } else {
             enviarPartido();
             formPartido.reset();
+            mostrarTabelaPartidos();
         }
     }
     evento.preventDefault();
